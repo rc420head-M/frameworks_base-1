@@ -3869,6 +3869,13 @@ public final class Settings {
          */
         public static final String DOUBLE_TAP_SLEEP_NAVBAR = "double_tap_sleep_navbar";
         
+        /**
+         * boolean value. toggles using arrow key locations on nav bar
+         * as left and right dpad keys
+         * @hide
+         */
+        public static final String NAVIGATION_BAR_MENU_ARROW_KEYS = "navigation_bar_menu_arrow_keys";
+        
        /**
          * @deprecated Use
          * {@link android.provider.Settings.Global#WIFI_MAX_DHCP_RETRY_COUNT} instead
