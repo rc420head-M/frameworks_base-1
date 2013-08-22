@@ -1791,7 +1791,6 @@ public final class PowerManagerService extends SystemService
                         nextTimeout = mLastUserActivityTime + screenOffTimeout;
                         if (now < nextTimeout) {
                             mButtonsLight.setBrightness(0);
-                            //mKeyboardLight.setBrightness(0);
                             mUserActivitySummary = USER_ACTIVITY_SCREEN_DIM;
                         }
                     }
