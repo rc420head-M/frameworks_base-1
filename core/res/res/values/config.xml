@@ -2543,4 +2543,7 @@
     <!-- BatteryLED fast charge -->
     <integer name="config_chargingFastThreshold">1500000</integer>
 
+    <!-- Boolean to enable stk functionality on Samsung phones -->
+    <bool name="config_samsung_stk">false</bool>
+
 </resources>
