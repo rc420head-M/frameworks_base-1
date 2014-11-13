@@ -407,6 +407,7 @@ public abstract class Connection extends Conferenceable {
      * Whether the dialing state is waiting for the busy remote side
      * @hide
      */
+
     public static final int PROPERTY_DIALING_IS_WAITING = 1 << 9;
 
     /**
@@ -724,6 +725,26 @@ public abstract class Connection extends Conferenceable {
 
         if (can(properties, PROPERTY_HAS_CDMA_VOICE_PRIVACY)) {
             builder.append(isLong ? " PROPERTY_HAS_CDMA_VOICE_PRIVACY" : " priv");
+        }
+
+        if (can(properties, PROPERTY_WAS_FORWARDED)) {
+            builder.append(" PROPERTY_WAS_FORWARDED");
+        }
+
+        if (can(properties, PROPERTY_HELD_REMOTELY)) {
+            builder.append(" PROPERTY_HELD_REMOTELY");
+        }
+
+        if (can(properties, PROPERTY_DIALING_IS_WAITING)) {
+            builder.append(" PROPERTY_DIALING_IS_WAITING");
+        }
+
+        if (can(properties, PROPERTY_ADDITIONAL_CALL_FORWARDED)) {
+            builder.append(" PROPERTY_ADDITIONAL_CALL_FORWARDED");
+        }
+
+        if (can(properties, PROPERTY_REMOTE_INCOMING_CALLS_BARRED)) {
+            builder.append(" PROPERTY_REMOTE_INCOMING_CALLS_BARRED");
         }
 
         if (can(properties, PROPERTY_WAS_FORWARDED)) {
