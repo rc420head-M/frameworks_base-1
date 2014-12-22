@@ -113,6 +113,9 @@
     <string name="global_action_screenshot">Screenshot</string>
     <string name="global_action_search">Search</string>
     <string name="global_action_voicesearch">Voice Search</string>
+    
+    <!-- Slimseekbar -->
+    <string name="default_string">Default</string>
 
      <!-- AOKP custom system animations -->
      <string name="animation_fade">Fade</string>
