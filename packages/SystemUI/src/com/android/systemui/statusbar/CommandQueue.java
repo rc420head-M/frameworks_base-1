@@ -110,11 +110,7 @@ public class CommandQueue extends IStatusBar.Stub {
         public void appTransitionStarting(long startTime, long duration);
         public void showAssistDisclosure();
         public void startAssist(Bundle args);
-<<<<<<< HEAD
-=======
-        public void onCameraLaunchGestureDetected(int source);
         public void setAutoRotate(boolean enabled);
->>>>>>> 136b500... Add all keyboard IME features back [1/2]
     }
 
     public CommandQueue(Callbacks callbacks, StatusBarIconList list) {
@@ -298,16 +294,6 @@ public class CommandQueue extends IStatusBar.Stub {
             mHandler.obtainMessage(MSG_START_ASSIST, args).sendToTarget();
         }
     }
-
-<<<<<<< HEAD
-=======
-    @Override
-    public void onCameraLaunchGestureDetected(int source) {
-        synchronized (mList) {
-            mHandler.removeMessages(MSG_CAMERA_LAUNCH_GESTURE);
-            mHandler.obtainMessage(MSG_CAMERA_LAUNCH_GESTURE, source, 0).sendToTarget();
-		}
-	}
 	
     public void setAutoRotate(boolean enabled) {
         synchronized (mList) {
@@ -317,7 +303,6 @@ public class CommandQueue extends IStatusBar.Stub {
         }
     }
 
->>>>>>> 136b500... Add all keyboard IME features back [1/2]
     private final class H extends Handler {
         public void handleMessage(Message msg) {
             final int what = msg.what & MSG_MASK;
@@ -416,15 +401,9 @@ public class CommandQueue extends IStatusBar.Stub {
                 case MSG_START_ASSIST:
                     mCallbacks.startAssist((Bundle) msg.obj);
                     break;
-<<<<<<< HEAD
-=======
-                case MSG_CAMERA_LAUNCH_GESTURE:
-                    mCallbacks.onCameraLaunchGestureDetected(msg.arg1);
-                    break;
                 case MSG_SET_AUTOROTATE_STATUS:
                     mCallbacks.setAutoRotate(msg.arg1 != 0);
                     break;
->>>>>>> 136b500... Add all keyboard IME features back [1/2]
             }
         }
     }
