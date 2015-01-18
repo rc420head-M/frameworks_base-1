@@ -111,7 +111,10 @@ public class CommandQueue extends IStatusBar.Stub {
         public void appTransitionStarting(long startTime, long duration);
         public void showAssistDisclosure();
         public void startAssist(Bundle args);
+<<<<<<< HEAD
         public void onCameraLaunchGestureDetected(int source);
+=======
+>>>>>>> a8e1e6e... Allow unlinking ringer with notification volume [1/2]
         public void setAutoRotate(boolean enabled);
     }
 
@@ -296,6 +299,7 @@ public class CommandQueue extends IStatusBar.Stub {
             mHandler.obtainMessage(MSG_START_ASSIST, args).sendToTarget();
         }
     }
+<<<<<<< HEAD
 
     @Override
     public void onCameraLaunchGestureDetected(int source) {
@@ -306,6 +310,9 @@ public class CommandQueue extends IStatusBar.Stub {
     }
 
 
+=======
+	
+>>>>>>> a8e1e6e... Allow unlinking ringer with notification volume [1/2]
     public void setAutoRotate(boolean enabled) {
         synchronized (mList) {
             mHandler.removeMessages(MSG_SET_AUTOROTATE_STATUS);
@@ -412,9 +419,12 @@ public class CommandQueue extends IStatusBar.Stub {
                 case MSG_START_ASSIST:
                     mCallbacks.startAssist((Bundle) msg.obj);
                     break;
+<<<<<<< HEAD
                 case MSG_CAMERA_LAUNCH_GESTURE:
                     mCallbacks.onCameraLaunchGestureDetected(msg.arg1);
                     break;
+=======
+>>>>>>> a8e1e6e... Allow unlinking ringer with notification volume [1/2]
                 case MSG_SET_AUTOROTATE_STATUS:
                     mCallbacks.setAutoRotate(msg.arg1 != 0);
                     break;
