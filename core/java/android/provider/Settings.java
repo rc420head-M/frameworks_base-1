@@ -3857,6 +3857,12 @@ public final class Settings {
         @Deprecated
         public static final String USE_GOOGLE_MAIL = Global.USE_GOOGLE_MAIL;
 
+        /**
+         *  Enable navigation bar double tap gesture on to put device to sleep
+         * @hide
+         */
+        public static final String DOUBLE_TAP_SLEEP_NAVBAR = "double_tap_sleep_navbar";
+        
        /**
          * @deprecated Use
          * {@link android.provider.Settings.Global#WIFI_MAX_DHCP_RETRY_COUNT} instead
