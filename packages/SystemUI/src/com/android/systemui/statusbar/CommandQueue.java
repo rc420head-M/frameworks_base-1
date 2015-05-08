@@ -114,6 +114,10 @@ public class CommandQueue extends IStatusBar.Stub {
         public void startAssist(Bundle args);
         public void setAutoRotate(boolean enabled);
         public void showCustomIntentAfterKeyguard(Intent intent);
+        public void toggleLastApp();
+        public void toggleKillApp();
+        public void toggleScreenshot();
+        public void toggleOrientationListener(boolean enable);
     }
 
     public CommandQueue(Callbacks callbacks, StatusBarIconList list) {
@@ -227,6 +231,10 @@ public class CommandQueue extends IStatusBar.Stub {
             mHandler.removeMessages(MSG_CANCEL_PRELOAD_RECENT_APPS);
             mHandler.obtainMessage(MSG_CANCEL_PRELOAD_RECENT_APPS, 0, 0, null).sendToTarget();
         }
+    }
+
+    public void toggleOrientationListener(boolean enable) {
+        mCallbacks.toggleOrientationListener(enable);
     }
 
     public void setWindowState(int window, int state) {

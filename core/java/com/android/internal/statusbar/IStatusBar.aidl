@@ -48,6 +48,10 @@ oneway interface IStatusBar
     void preloadRecentApps();
     void cancelPreloadRecentApps();
     void showScreenPinningRequest();
+    void toggleLastApp();
+    void toggleKillApp();
+    void toggleScreenshot();
+    void toggleOrientationListener(boolean enable);
 
     /**
      * Notifies the status bar that an app transition is pending to delay applying some flags with
@@ -75,4 +79,3 @@ oneway interface IStatusBar
     void setAutoRotate(boolean enabled);
     void showCustomIntentAfterKeyguard(inout Intent intent);
 }
-
