@@ -62,6 +62,14 @@
                 android:layout_marginStart="@dimen/navigation_side_padding"
                 android:src="@drawable/ic_sysbar_lights_out_dot_large"
                 android:scaleType="center"
+                android:layout_weight="2"
+                />
+            <ImageView
+                android:layout_width="@dimen/navigation_key_width"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_sysbar_lights_out_dot_large"
+                android:scaleType="center"
+                android:layout_weight="1"
                 />
             <View
                 android:layout_width="0dp"
@@ -74,12 +82,13 @@
                 android:layout_height="match_parent"
                 android:src="@drawable/ic_sysbar_lights_out_dot_large"
                 android:scaleType="center"
+                android:layout_weight="1"
                 />
             <View
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
                 android:visibility="invisible"
+                android:layout_weight="1"
                 />
             <ImageView
                 android:layout_width="@dimen/navigation_key_width"
@@ -87,18 +96,20 @@
                 android:layout_height="match_parent"
                 android:src="@drawable/ic_sysbar_lights_out_dot_large"
                 android:scaleType="center"
+                android:layout_weight="1"
                 />
             <View
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:visibility="invisible"
                 android:layout_weight="1"
+                android:visibility="invisible"
                 />
             <ImageView
-                android:layout_width="80dp"
+                android:layout_width="@dimen/navigation_key_width"
                 android:layout_height="match_parent"
                 android:src="@drawable/ic_sysbar_lights_out_dot_large"
                 android:scaleType="center"
+                android:layout_weight="2"
                 />
         </LinearLayout>
 
@@ -155,6 +166,14 @@
                 android:layout_width="match_parent"
                 android:src="@drawable/ic_sysbar_lights_out_dot_large"
                 android:scaleType="center"
+                android:layout_weight="2"
+                />
+            <ImageView
+                android:layout_height="80dp"
+                android:layout_width="match_parent"
+                android:src="@drawable/ic_sysbar_lights_out_dot_large"
+                android:scaleType="center"
+                android:layout_weight="1"
                 />
             <View
                 android:layout_height="0dp"
@@ -167,12 +186,13 @@
                 android:layout_width="match_parent"
                 android:src="@drawable/ic_sysbar_lights_out_dot_large"
                 android:scaleType="center"
+                android:layout_weight="1"
                 />
             <View
-                android:layout_height="0dp"
                 android:layout_width="match_parent"
-                android:layout_weight="1"
+                android:layout_height="0dp"
                 android:visibility="invisible"
+                android:layout_weight="1"
                 />
             <ImageView
                 android:layout_height="@dimen/navigation_key_width"
@@ -180,18 +200,20 @@
                 android:layout_width="match_parent"
                 android:src="@drawable/ic_sysbar_lights_out_dot_large"
                 android:scaleType="center"
+                android:layout_weight="1"
                 />
             <View
-                android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:visibility="invisible"
+                android:layout_width="match_parent"
                 android:layout_weight="1"
+                android:visibility="invisible"
                 />
             <ImageView
                 android:layout_height="80dp"
                 android:layout_width="match_parent"
                 android:src="@drawable/ic_sysbar_lights_out_dot_large"
                 android:scaleType="center"
+               android:layout_weight="2"
                 />
         </LinearLayout>
 
