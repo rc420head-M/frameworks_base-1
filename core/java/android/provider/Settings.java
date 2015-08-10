@@ -4050,6 +4050,13 @@ public final class Settings {
          */
         public static final String STATUS_BAR_CUSTOM_HEADER_PROVIDER = "status_bar_custom_header_provider";
 
+         /**
+         * Three Finger Gesture from Oppo
+         *
+         * @hide
+         */
+        public static final String THREE_FINGER_GESTURE = "three_finger_gesture";
+
         /**
          * Enable/Disable screenshot sound
          * @hide
