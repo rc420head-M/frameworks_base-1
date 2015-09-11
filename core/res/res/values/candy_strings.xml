@@ -165,4 +165,7 @@
 
     <!-- App killed message -->
     <string name="app_killed_message">Application killed</string>
+
+    <!-- Wifi Hotspot disabled due to subscription change -->
+    <string name="subscription_change_disabled_wifi_ap">Disabled WiFi hotspot due to SIM subscription change</string>
 </resources>
