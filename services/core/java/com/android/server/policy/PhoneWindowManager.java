@@ -6404,6 +6404,13 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                            mUserRotationAngles, mAllowAllRotations != 0);
                 }
                 if (allowed) {
+                // use sensor orientation if it's forced, or if the user has allowed it
+                boolean useSensorRotation =
+                        orientation == ActivityInfo.SCREEN_ORIENTATION_FULL_SENSOR
+                        || orientation == ActivityInfo.SCREEN_ORIENTATION_FULL_USER
+                        || RotationPolicy.isRotationAllowed(sensorRotation, mUserRotationAngles,
+                                mAllowAllRotations != 0);
+                if (useSensorRotation) {
                     preferredRotation = sensorRotation;
                 } else {
                     preferredRotation = lastRotation;
@@ -6482,7 +6489,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
             }
         }
     }
-
+  }
     @Override
     public boolean rotationHasCompatibleMetricsLw(int orientation, int rotation) {
         switch (orientation) {
