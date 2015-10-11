@@ -15,5 +15,8 @@
 
     <!-- Is Advanced Reboot enabled? -->
     <bool name="config_advanced_reboot">true</bool>
+    
+    <!-- kill app long press back -->
+    <integer name="config_backKillTimeout">1000</integer>
 
 </resources>
