@@ -2629,6 +2629,12 @@ public final class Settings {
         private static final Validator VOLUME_MASTER_MUTE_VALIDATOR = sBooleanValidator;
 
         /**
+          * Volume rocker wake
+         * @hide
+         */
+        public static final String VOLUME_ROCKER_WAKE = "volume_rocker_wake";
+        
+        /**
          * Whether or not volume button music controls should be enabled to seek media tracks
          * @hide
          */
