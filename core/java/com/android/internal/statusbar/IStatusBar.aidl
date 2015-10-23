@@ -76,5 +76,6 @@ oneway interface IStatusBar
      * @param source the identifier for the gesture, see {@link StatusBarManager}
      */
     void onCameraLaunchGestureDetected(int source);
+    void setAutoRotate(boolean enabled);
 }
 
