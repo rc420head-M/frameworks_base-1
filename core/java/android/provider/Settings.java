@@ -3676,6 +3676,7 @@ public final class Settings {
         public static final String NAVIGATION_BAR_SHOW = "navigation_bar_show";
 
         /**
+<<<<<<< HEAD
          * Whether to show the battery bar
          * @hide
          */
@@ -3700,6 +3701,12 @@ public final class Settings {
          * @hide
          */
         public static final String STATUSBAR_BATTERY_BAR_ANIMATE = "statusbar_battery_bar_animate";
+=======
+         * Whether the notification light will be allowed when in zen mode during downtime
+         * @hide
+         */
+        public static final String ALLOW_LIGHTS = "allow_lights";
+>>>>>>> fc2f2c9... Frameworks: Allow/Prevent notification light in Zen mode (1 of 2)
 
         /**
          * Settings to backup. This is here so that it's in the same place as the settings
@@ -3755,7 +3762,8 @@ public final class Settings {
             NOTIFICATION_SOUND,
             WIFI_AUTO_CONNECT_TYPE,
             STATUS_BAR_SHOW_BATTERY_PERCENT,
-            STATUS_BAR_BATTERY_STYLE
+            STATUS_BAR_BATTERY_STYLE,
+            ALLOW_LIGHTS,
         };
 
         /**
