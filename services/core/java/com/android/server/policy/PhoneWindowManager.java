@@ -867,6 +867,9 @@ public class PhoneWindowManager implements WindowManagerPolicy {
             resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.NAVIGATION_BAR_SHOW), false, this,
                     UserHandle.USER_ALL);
+            resolver.registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.ACCELEROMETER_ROTATION_ANGLES), false, this,
+                    UserHandle.USER_ALL);
             updateSettings();
         }
 
@@ -6469,7 +6472,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                 boolean allowed = true;
                 if (mUserRotationAngles < 0) {
                     // Not set by user so use these defaults
-                    mUserRotationAngles = mAllowAllRotations == 1 ?
+                     mUserRotationAngles = mAllowAllRotations == 1 ?
                             (1 | 2 | 4 | 8) : // All angles
                                 (1 | 2 | 8); // All except 180
                 }
