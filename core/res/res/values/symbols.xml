@@ -2803,5 +2803,4 @@
   <java-symbol type="array" name="config_defaultFirstUserRestrictions" />
 
   <java-symbol type="drawable" name="ic_restart" />
-
 </resources>
