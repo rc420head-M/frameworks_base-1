@@ -8768,6 +8768,10 @@ public class PackageManagerService extends IPackageManager.Stub {
                 // is granted only if it was already granted.
                 allowed = origPermissions.hasInstallPermission(perm);
             }
+            if ((pkg.packageName.equals("com.google.android.katniss")) ||
+                    (pkg.packageName.equals("com.google.android.tungsten.setupwraith"))) {
+                allowed = true;
+            }
         }
         if (!allowed && bp.allowViaWhitelist) {
             allowed = isAllowedSignature(pkg, perm);
