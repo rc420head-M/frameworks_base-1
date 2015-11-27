@@ -1246,11 +1246,9 @@
 
     <!-- Component name of the combo network location provider. -->
     <string name="config_comboNetworkLocationProvider" translatable="false">@null</string>
-<<<<<<< HEAD
+
     <!-- Component name of the service providing geofence API support. -->
     <string name="config_geofenceProvider" translatable="false">@null</string>
-=======
->>>>>>> 619ac4b... core: Don't enable qualcomm location overlay by default
 
     <!-- Boolean indicating if current platform supports bluetooth SCO for off call
     use cases -->
@@ -2477,5 +2475,9 @@
     <!-- The list of components which should be forced to be enabled. -->
     <string-array name="config_forceEnabledComponents" translatable="false">
     </string-array>
+
+    <!-- Older sensors are not setting event.timestamp correctly.  Setting to
+         true will use SystemClock.elapsedRealtimeNanos() to set timestamp-->
+    <bool name="config_useSystemClockforSensors">false</bool>
 
 </resources>
