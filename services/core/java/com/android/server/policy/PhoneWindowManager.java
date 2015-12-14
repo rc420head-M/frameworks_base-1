@@ -82,6 +82,7 @@ import android.service.dreams.DreamService;
 import android.service.dreams.IDreamManager;
 import android.speech.RecognizerIntent;
 import android.telecom.TelecomManager;
+import android.text.Html;
 import android.util.DisplayMetrics;
 import android.util.EventLog;
 import android.util.Log;
@@ -133,6 +134,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.Random;
 import java.util.List;
 import java.lang.reflect.Constructor;
 
@@ -6543,10 +6545,17 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                     mBootMsgDialog.show();
                 }
 
-                if (always && (currentPackageName != null)) {
-                    // Only display the current package name if the main message says "Optimizing app N of M".
-                    // We don't want to do this when the message says "Starting apps" or "Finishing boot", etc.
-                    mBootMsgDialog.setMessage(msg + "\n" + currentPackageName);
+                // Only display the current package name if the main message says "Optimizing app N of M".
+                // We don't want to do this when the message says "Starting apps" or "Finishing boot", etc.
+                if (always && (currentPackageName != null)) {                    
+
+                    // Calculate random text color
+                    Random rand = new Random();
+                    String randomColor = Integer.toHexString(rand.nextInt(0xFFFFFF) & 0xFCFCFC );
+                    mBootMsgDialog.setMessage(Html.fromHtml(msg +
+                                                            "<br><b><font color=\"#" + randomColor + "\">" +
+                                                            currentPackageName +
+                                                            "</font></b>"));
                 }
                 else {
                     mBootMsgDialog.setMessage(msg);
