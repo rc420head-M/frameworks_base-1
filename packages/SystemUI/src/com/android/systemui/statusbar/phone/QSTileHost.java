@@ -56,6 +56,7 @@ import com.android.systemui.qs.tiles.NfcTile;
 import com.android.systemui.qs.tiles.PieTile;
 import com.android.systemui.qs.tiles.RotationLockTile;
 import com.android.systemui.qs.tiles.ScreenOffTile;
+import com.android.systemui.qs.tiles.ScreenrecordTile;
 import com.android.systemui.qs.tiles.ScreenshotTile;
 import com.android.systemui.qs.tiles.ScreenTimeoutTile;
 import com.android.systemui.qs.tiles.SyncTile;
@@ -334,6 +335,8 @@ public class QSTileHost implements QSTile.Host {
                 return new PieTile(this);
             case QSConstants.TILE_VOLUME:		
                 return new VolumeTile(this);
+            case QSConstants.TILE_SCREEN_RECORD:
+                return new ScreenrecordTile(this);
             case QSConstants.TILE_MUSIC:		
                 return new MusicTile(this);
             default:
