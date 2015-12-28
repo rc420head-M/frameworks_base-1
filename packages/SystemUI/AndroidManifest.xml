@@ -177,6 +177,14 @@
         <service android:name=".screenshot.TakeScreenshotService"
             android:process=":screenshot"
             android:exported="false" />
+        <receiver android:name=".screenshot.TrashScreenshot"
+                android:exported="true" />
+
+ 	<!-- started from PhoneWindowManager
+             TODO: Should have an android:permission attribute -->
+        <service android:name=".aicp.onthego.OnTheGoService"
+            android:process=":onthego"
+            android:exported="false" />
 
         <service android:name=".LoadAverageService"
                 android:exported="true" />
@@ -443,3 +451,4 @@
         </activity>
     </application>
 </manifest>
+
