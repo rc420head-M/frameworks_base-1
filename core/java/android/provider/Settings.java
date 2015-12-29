@@ -3403,12 +3403,6 @@ public final class Settings {
         public static final String PEOPLE_LOOKUP_PROVIDER = "people_lookup_provider";
 
         /**
-         * Whether newly installed apps should run with privacy guard by default
-         * @hide
-         */
-        public static final String PRIVACY_GUARD_DEFAULT = "privacy_guard_default";
-
-        /**
          * The reverse lookup provider
          * @hide
          */
@@ -8680,6 +8674,12 @@ public final class Settings {
         public static boolean putBooleanForUser(ContentResolver cr, String name, boolean value, int userHandle) {
             return putStringForUser(cr, name, value ? "1" : "0", userHandle);
         }
+        
+        /**
+         * Whether newly installed apps should run with privacy guard by default
+         * @hide
+         */
+        public static final String PRIVACY_GUARD_DEFAULT = "privacy_guard_default";
 
     }
 
