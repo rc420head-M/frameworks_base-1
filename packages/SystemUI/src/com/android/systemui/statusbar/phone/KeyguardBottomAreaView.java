@@ -30,16 +30,6 @@ import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.content.res.Configuration;
 import android.hardware.fingerprint.FingerprintManager;
-<<<<<<< HEAD
-=======
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.ColorMatrix;
-import android.graphics.ColorMatrixColorFilter;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.hardware.fingerprint.FingerprintManager;
->>>>>>> 73b1442... SystemUI: Lockscreen shortcut customization
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.IBinder;
@@ -222,6 +212,7 @@ public class KeyguardBottomAreaView extends FrameLayout implements View.OnClickL
         mShortcutHelper = new LockscreenShortcutsHelper(mContext, this);
         watchForCameraPolicyChanges();
         updateCameraVisibility();
+        updateLeftButtonVisibility();
         mUnlockMethodCache = UnlockMethodCache.getInstance(getContext());
         mUnlockMethodCache.addListener(this);
         mLockIcon.update();
@@ -259,6 +250,7 @@ public class KeyguardBottomAreaView extends FrameLayout implements View.OnClickL
         mCameraImageView.setContentDescription(contentDescription);
         mCameraImageView.setDefaultFilter(shouldGrayScale ? mGrayScaleFilter : null);
         updateCameraVisibility();
+        updateLeftButtonVisibility();
     }
 
     private void initAccessibility() {
@@ -302,11 +294,13 @@ public class KeyguardBottomAreaView extends FrameLayout implements View.OnClickL
     public void setPhoneStatusBar(PhoneStatusBar phoneStatusBar) {
         mPhoneStatusBar = phoneStatusBar;
         updateCameraVisibility(); // in case onFinishInflate() was called too early
+        updateLeftButtonVisibility();
     }
 
     public void setUserSetupComplete(boolean userSetupComplete) {
         mUserSetupComplete = userSetupComplete;
         updateCameraVisibility();
+        updateLeftButtonVisibility();
         updateLeftAffordanceIcon();
     }
 
@@ -318,19 +312,32 @@ public class KeyguardBottomAreaView extends FrameLayout implements View.OnClickL
         return (secure && !canSkipBouncer) ? SECURE_CAMERA_INTENT : INSECURE_CAMERA_INTENT;
     }
 
+    private void updateLeftButtonVisibility() {
+        if (mLeftAffordanceView == null) {
+            return;
+        }
+        boolean visible = mUserSetupComplete;
+        if (visible) {
+            if (isTargetCustom(Shortcuts.LEFT_SHORTCUT)) {
+                visible = !mShortcutHelper.isTargetEmpty(Shortcuts.LEFT_SHORTCUT);
+            } else {
+                // El Janky lives again
+            }
+        }
+        mLeftAffordanceView.setVisibility(visible ? View.VISIBLE : View.GONE);
+    }
+
     private void updateCameraVisibility() {
         if (mCameraImageView == null) {
             // Things are not set up yet; reply hazy, ask again later
             return;
         }
-<<<<<<< HEAD
         ResolveInfo resolved = mContext.getPackageManager().resolveActivityAsUser(getCameraIntent(),
                 PackageManager.MATCH_DEFAULT_ONLY,
                 KeyguardUpdateMonitor.getCurrentUser());
         boolean visible = !isCameraDisabledByDpm() && resolved != null
                 && getResources().getBoolean(R.bool.config_keyguardShowCameraAffordance)
                 && mUserSetupComplete;
-=======
         boolean visible = mUserSetupComplete;
         if (visible) {
             if (isTargetCustom(Shortcuts.RIGHT_SHORTCUT)) {
@@ -341,7 +348,6 @@ public class KeyguardBottomAreaView extends FrameLayout implements View.OnClickL
                         && getResources().getBoolean(R.bool.config_keyguardShowCameraAffordance);
             }
         }
->>>>>>> 73b1442... SystemUI: Lockscreen shortcut customization
         mCameraImageView.setVisibility(visible ? View.VISIBLE : View.GONE);
     }
 
@@ -367,6 +373,7 @@ public class KeyguardBottomAreaView extends FrameLayout implements View.OnClickL
         mLeftAffordanceView.setImageDrawable(drawable);
         mLeftAffordanceView.setContentDescription(contentDescription);
         mLeftAffordanceView.setDefaultFilter(shouldGrayScale ? mGrayScaleFilter : null);
+        updateLeftButtonVisibility();
     }
 
     public boolean isLeftVoiceAssist() {
@@ -484,10 +491,6 @@ public class KeyguardBottomAreaView extends FrameLayout implements View.OnClickL
         }
     }
 
-<<<<<<< HEAD
-    public void launchCamera() {
-        final Intent intent = getCameraIntent();
-=======
     public void launchCamera(String source) {
         final Intent intent;
         if (!mShortcutHelper.isTargetCustom(LockscreenShortcutsHelper.Shortcuts.RIGHT_SHORTCUT)) {
@@ -496,7 +499,6 @@ public class KeyguardBottomAreaView extends FrameLayout implements View.OnClickL
             intent = mShortcutHelper.getIntent(LockscreenShortcutsHelper.Shortcuts.RIGHT_SHORTCUT);
             intent.putExtra(EXTRA_CAMERA_LAUNCH_SOURCE, source);
         }
->>>>>>> 73b1442... SystemUI: Lockscreen shortcut customization
         boolean wouldLaunchResolverActivity = PreviewInflater.wouldLaunchResolverActivity(
                 mContext, intent, KeyguardUpdateMonitor.getCurrentUser());
         if (intent == SECURE_CAMERA_INTENT && !wouldLaunchResolverActivity) {
@@ -599,6 +601,7 @@ public class KeyguardBottomAreaView extends FrameLayout implements View.OnClickL
         if (changedView == this && visibility == VISIBLE) {
             mLockIcon.update();
             updateCameraVisibility();
+            updateLeftButtonVisibility();
         }
     }
 
@@ -635,6 +638,7 @@ public class KeyguardBottomAreaView extends FrameLayout implements View.OnClickL
     public void onUnlockMethodStateChanged() {
         mLockIcon.update();
         updateCameraVisibility();
+        updateLeftButtonVisibility();
     }
 
     private void inflateCameraPreview() {
@@ -706,6 +710,7 @@ public class KeyguardBottomAreaView extends FrameLayout implements View.OnClickL
                 @Override
                 public void run() {
                     updateCameraVisibility();
+                    updateLeftButtonVisibility();
                 }
             });
         }
@@ -731,6 +736,7 @@ public class KeyguardBottomAreaView extends FrameLayout implements View.OnClickL
         @Override
         public void onUserSwitchComplete(int userId) {
             updateCameraVisibility();
+            updateLeftButtonVisibility();
         }
 
         @Override
