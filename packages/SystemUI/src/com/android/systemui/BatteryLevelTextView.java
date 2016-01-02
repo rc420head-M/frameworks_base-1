@@ -28,11 +28,16 @@ import java.text.NumberFormat;
 
 public class BatteryLevelTextView extends TextView implements
         BatteryController.BatteryStateChangeCallback{
+
+    private static final String STATUS_BAR_BATTERY_STYLE = "status_bar_battery_style";
+    private static final String STATUS_BAR_SHOW_BATTERY_PERCENT = "status_bar_show_battery_percent";
+
     private BatteryController mBatteryController;
     private boolean mBatteryCharging;
     private boolean mForceShow;
     private boolean mAttached;
     private int mRequestedVisibility;
+
     private int mStyle;
     private int mPercentMode;
 
