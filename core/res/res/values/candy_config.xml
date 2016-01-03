@@ -19,4 +19,8 @@
     <!-- kill app long press back -->
     <integer name="config_backKillTimeout">1000</integer>
 
+    <!-- Do the battery/notification LEDs support pulsing?
+         Used to decide if we show pulse settings -->
+    <bool name="config_ledCanPulse">true</bool>
+
 </resources>
