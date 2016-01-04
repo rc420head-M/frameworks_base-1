@@ -3662,7 +3662,6 @@ public final class Settings {
          */
 
         /**
-<<<<<<< HEAD
          * Whether to show the battery bar
          * @hide
          */
@@ -3687,12 +3686,13 @@ public final class Settings {
          * @hide
          */
         public static final String STATUSBAR_BATTERY_BAR_ANIMATE = "statusbar_battery_bar_animate";
-=======
+
+        /*
          * Whether the notification light will be allowed when in zen mode during downtime
          * @hide
          */
         public static final String ALLOW_LIGHTS = "allow_lights";
->>>>>>> fc2f2c9... Frameworks: Allow/Prevent notification light in Zen mode (1 of 2)
+
 
 		/**
         * Network traffic indicator, goes from least to greatest significant bitwise
