@@ -1025,7 +1025,6 @@ public class StatusBarHeaderView extends RelativeLayout implements View.OnClickL
                 default:
                     break;
             }
-        }
 
             mShowBatteryTextExpanded = showExpandedBatteryPercentage;
             mShowWeather = Settings.System.getIntForUser(
@@ -1033,6 +1032,7 @@ public class StatusBarHeaderView extends RelativeLayout implements View.OnClickL
             updateVisibilities();
             requestCaptureValues();
         }
+    }
 
     private void doUpdateStatusBarCustomHeader(final Drawable next, final boolean force) {
         if (next != null) {
