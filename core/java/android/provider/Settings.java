@@ -8934,25 +8934,6 @@ public final class Settings {
         }
 
         /**
-         * Convenience function for retrieving a single secure settings value
-         * as a float.  Note that internally setting values are always
-         * stored as strings; this function converts the string to a float
-         * for you.
-         * <p>
-         * This version does not take a default value.  If the setting has not
-         * been set, or the string value is not a number,
-         * it throws {@link SettingNotFoundException}.
-         *
-         * @param cr The ContentResolver to access.
-         * @param name The name of the setting to retrieve.
-         *
-         * @throws SettingNotFoundException Thrown if a setting by the given
-         * name can't be found or the setting value is not a float.
-         * @hide
-         */
-        public static final String POLICY_CONTROL_SELECTED = "policy_control_selected";
-
-        /**
          * @hide
          */
         public static final String ZEN_DISABLE_DUCKING_DURING_MEDIA_PLAYBACK =
