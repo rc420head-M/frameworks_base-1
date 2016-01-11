@@ -3884,8 +3884,14 @@ public final class Settings {
          * @hide
          */
         public static final String LOCK_CLOCK_FONTS = "lock_clock_fonts";
+
+        /**
+         * Boolean value on whether to show weather in the statusbar
+         * @hide
+         */
+        public static final String STATUS_BAR_SHOW_WEATHER = "status_bar_show_weather";
                 
-       /**
+        /**
          * Display style of the status bar battery information
          * 0: Display the battery an icon in portrait mode
          * 2: Display the battery as a circle
