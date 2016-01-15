@@ -395,6 +395,7 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
     ArrayList<Runnable> mPostCollapseRunnables = new ArrayList<>();
 
     private boolean mAutomaticBrightness;
+    private int mStatusBarHeaderHeight;
     private boolean mBrightnessControl;
     private boolean mBrightnessChanged;
     private float mScreenWidth;
@@ -404,9 +405,6 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
     int mInitialTouchX;
     int mInitialTouchY;
 
-    // last theme that was applied in order to detect theme change (as opposed
-    // to some other configuration change).
-    ThemeConfig mCurrentTheme;
     private boolean mRecreating = false;
 
     // for disabling the status bar
