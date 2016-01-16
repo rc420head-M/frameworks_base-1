@@ -3740,6 +3740,7 @@ public final class Settings {
         public static final String KEY_ASSIST_DOUBLE_TAP_ACTION = "key_assist_double_tap_action";
 
         /**
+
          * Action to perform when the app switch key is pressed. (default: ACTION_RECENTS)
          * (See ButtonsConstants.java for valid values)
          * @hide
