@@ -2420,4 +2420,7 @@
          true will use SystemClock.elapsedRealtimeNanos() to set timestamp-->
     <bool name="config_useSystemClockforSensors">false</bool>
 
+    <!-- Show battery fully charged notification -->
+    <bool name="config_showBatteryFullyChargedNotification">false</bool>
+
 </resources>
