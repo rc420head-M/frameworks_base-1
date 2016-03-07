@@ -240,11 +240,7 @@ public class DisconnectCause {
     /** EMERGENCY call failed with permanent fail cause */
     public static final int EMERGENCY_PERM_FAILURE         = 97;
 
-<<<<<<< HEAD
     public static final int NON_SELECTED_USER_CLEARING = 98;
-=======
-
->>>>>>> 7c81d71... telephony: Make the disconnect cause distinguishable
 
 
     //*********************************************************************************************
@@ -255,22 +251,14 @@ public class DisconnectCause {
     // 4) Update toString() with the newly added disconnect type.
     // 5) Update android.telecom.DisconnectCauseUtil with any mappings to a telecom.DisconnectCause.
     //
-<<<<<<< HEAD
-    // NextId: 99
-=======
     // NextId: 98
->>>>>>> 7c81d71... telephony: Make the disconnect cause distinguishable
     //*********************************************************************************************
 
     /** Smallest valid value for call disconnect codes. */
     public static final int MINIMUM_VALID_VALUE = NOT_DISCONNECTED;
 
     /** Largest valid value for call disconnect codes. */
-<<<<<<< HEAD
-    public static final int MAXIMUM_VALID_VALUE = NON_SELECTED_USER_CLEARING;
-=======
     public static final int MAXIMUM_VALID_VALUE = EMERGENCY_PERM_FAILURE;
->>>>>>> 7c81d71... telephony: Make the disconnect cause distinguishable
 
     /** Private constructor to avoid class instantiation. */
     private DisconnectCause() {
@@ -476,10 +464,6 @@ public class DisconnectCause {
             return "EMERGENCY_TEMP_FAILURE";
         case EMERGENCY_PERM_FAILURE:
             return "EMERGENCY_PERM_FAILURE";
-<<<<<<< HEAD
-=======
-
->>>>>>> 7c81d71... telephony: Make the disconnect cause distinguishable
         default:
             return "INVALID: " + cause;
         }
