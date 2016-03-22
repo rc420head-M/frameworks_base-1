@@ -17587,6 +17587,8 @@ public class PackageManagerService extends IPackageManager.Stub {
         for (String themePkgName : themesToProcess) {
             processThemeResources(themePkgName);
         }
+
+        updateIconMapping(themeConfig.getIconPackPkgName());
     }
 
     /**
