@@ -1984,6 +1984,37 @@ public final class Settings {
             return putStringForUser(cr, name, Float.toString(value), userHandle);
         }
 
+        /** @hide */
+        public static boolean getBoolean(ContentResolver cr, String name, boolean def) {
+            return getBooleanForUser(cr, name, def, UserHandle.myUserId());
+        }
+
+        /** @hide */
+        public static boolean getBooleanForUser(ContentResolver cr, String name, boolean def,
+                                                int userHandle) {
+            final String v = getStringForUser(cr, name, userHandle);
+            try {
+                if (v != null) {
+                    return "1".equals(v);
+                } else {
+                    return def;
+                }
+            } catch (NumberFormatException e) {
+                return def;
+            }
+        }
+
+        /** @hide */
+        public static boolean putBoolean(ContentResolver cr, String name, boolean value) {
+            return putBooleanForUser(cr, name, value, UserHandle.myUserId());
+        }
+
+        /** @hide */
+        public static boolean putBooleanForUser(ContentResolver cr, String name, boolean value,
+                                                int userHandle) {
+            return putStringForUser(cr, name, value ? "1" : "0", userHandle);
+        }
+
         /**
          * Convenience function to read all of the current
          * configuration-related settings into a
@@ -4107,6 +4138,20 @@ public final class Settings {
          * @hide
          */
         public static final String STATUSBAR_BATTERY_BAR = "statusbar_battery_bar";
+
+        /**
+         * If On-The-Go should be displayed at the power menu.
+         *
+         * @hide
+         */
+        public static final String POWER_MENU_ONTHEGO_ENABLED = "power_menu_onthego_enabled";
+        
+        /**
+         * If On-The-Go should be displayed at the power menu.
+         *
+         * @hide
+         */
+        public static final String ACTION_ONTHEGO_TOGGLE = "action_onthego_toggle";
 
         /**
          * The alpha value of the On-The-Go overlay.
