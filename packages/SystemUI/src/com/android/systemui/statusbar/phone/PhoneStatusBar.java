@@ -522,6 +522,9 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
             resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.STATUS_BAR_CARRIER_LABEL_COLOR),
                     false, this, UserHandle.USER_ALL);
+            resolver.registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.QS_TRANSPARENT_SHADE),
+                    false, this, UserHandle.USER_ALL);
             update();
         }
 
@@ -617,6 +620,9 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
                 if (mNavigationBarView != null) {
                     mNavigationBarView.updateNavigationBarSettings();
                     mNavigationBarView.onNavButtonTouched();
+	    } else if (uri.equals(Settings.System.getUriFor(
+		    Settings.System.QS_TRANSPARENT_SHADE))) {
+	  	mNotificationPanel.setQSBackgroundAlpha();
                 }
                 update();
             }
