@@ -2548,8 +2548,8 @@ public class NotificationPanelView extends PanelView implements
             mStatusBarLockedOnSecureKeyguard = Settings.Secure.getIntForUser(
                     resolver, Settings.Secure.STATUS_BAR_LOCKED_ON_SECURE_KEYGUARD, 1,
                     UserHandle.USER_CURRENT) == 1;
-            mQSShadeAlpha = Settings.System.getInt(
-                    resolver, Settings.System.QS_TRANSPARENT_SHADE, 255);
+            mQSShadeAlpha = Settings.System.getIntForUser(
+                    resolver, Settings.System.QS_TRANSPARENT_SHADE, 255, UserHandle.USER_CURRENT);
             setQSBackgroundAlpha();
         }
     }
