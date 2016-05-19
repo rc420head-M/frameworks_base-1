@@ -500,9 +500,9 @@ public class NavigationBarView extends LinearLayout {
         mBackAltIcon = res.getDrawable(R.drawable.ic_sysbar_back_ime);
         mBackAltLandIcon = mBackAltIcon;
         mRecentIcon = res.getDrawable(R.drawable.ic_sysbar_recent);
-        mRecentLandIcon = res.getDrawable(R.drawable.ic_sysbar_recent_land);
+        mRecentLandIcon = res.getDrawable(R.drawable.ic_sysbar_recent);
         mHomeIcon = res.getDrawable(R.drawable.ic_sysbar_home);
-        mHomeLandIcon = res.getDrawable(R.drawable.ic_sysbar_home_land);
+        mHomeLandIcon = res.getDrawable(R.drawable.ic_sysbar_home);
     }
 
     public void updateResources(Resources res) {

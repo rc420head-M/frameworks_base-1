@@ -395,7 +395,6 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
     ArrayList<Runnable> mPostCollapseRunnables = new ArrayList<>();
 
     private boolean mAutomaticBrightness;
-    private int mStatusBarHeaderHeight;
     private boolean mBrightnessControl;
     private boolean mBrightnessChanged;
     private float mScreenWidth;
