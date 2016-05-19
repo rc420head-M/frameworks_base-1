@@ -145,6 +145,7 @@
     <color name="zen_introduction_message_background">#ff009688</color><!-- deep teal 500 -->
     <color name="volume_icon_color">#ffffffff</color>
     <color name="volume_settings_icon_color">#7fffffff</color>
+    <color name="volume_slider_active">@color/system_accent_color</color>
     <color name="volume_slider_inactive">#FFB0BEC5</color><!-- blue grey 200 -->
 
     <!-- QS Toast Text color -->
