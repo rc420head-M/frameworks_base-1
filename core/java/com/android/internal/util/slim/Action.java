@@ -104,34 +104,12 @@ public class Action {
             } else if (action.equals(ActionConstants.ACTION_SEARCH)) {
                 triggerVirtualKeypress(KeyEvent.KEYCODE_SEARCH, isLongpress);
                 return;
-            } else if (action.equals(ActionConstants.ACTION_KILL)) {
-                if (isKeyguardShowing) return;
-                try {
-                    barService.toggleKillApp();
-                } catch (RemoteException e) {}
-                return;
             } else if (action.equals(ActionConstants.ACTION_NOTIFICATIONS)) {
                 if (isKeyguardShowing && isKeyguardSecure) {
                     return;
                 }
                 try {
                     barService.expandNotificationsPanel();
-                } catch (RemoteException e) {
-                }
-                return;
-            } else if (action.equals(ActionConstants.ACTION_SETTINGS_PANEL)) {
-                if (isKeyguardShowing && isKeyguardSecure) {
-                    return;
-                }
-                try {
-                    barService.expandSettingsPanel();
-                } catch (RemoteException e) {}
-            } else if (action.equals(ActionConstants.ACTION_LAST_APP)) {
-                if (isKeyguardShowing) {
-                    return;
-                }
-                try {
-                    barService.toggleLastApp();
                 } catch (RemoteException e) {
                 }
                 return;
@@ -184,39 +162,6 @@ public class Action {
                 context.sendBroadcastAsUser(
                         new Intent("android.settings.SHOW_INPUT_METHOD_PICKER"),
                         new UserHandle(UserHandle.USER_CURRENT));
-                return;
-            } else if (action.equals(ActionConstants.ACTION_KILL)) {
-                if (isKeyguardShowing) {
-                    return;
-                }
-                try {
-                    barService.toggleKillApp();
-                } catch (RemoteException e) {
-                }
-                return;
-            } else if (action.equals(ActionConstants.ACTION_LAST_APP)) {
-                if (isKeyguardShowing) {
-                    return;
-                }
-                try {
-                    barService.toggleLastApp();
-                } catch (RemoteException e) {
-                }
-                return;
-            } else if (action.equals(ActionConstants.ACTION_SCREENSHOT)) {
-                try {
-                    barService.toggleScreenshot();
-                } catch (RemoteException e) {
-                }
-                return;
-            } else if (action.equals(ActionConstants.ACTION_RECENTS)) {
-                if (isKeyguardShowing) {
-                    return;
-                }
-                try {
-                    barService.toggleRecentApps();
-                } catch (RemoteException e) {
-                }
                 return;
             } else if (action.equals(ActionConstants.ACTION_ASSIST)
                     || action.equals(ActionConstants.ACTION_KEYGUARD_SEARCH)) {
@@ -323,11 +268,6 @@ public class Action {
                 if (!powerManager.isScreenOn()) {
                     powerManager.wakeUp(SystemClock.uptimeMillis());
                 }
-                return;
-            } else if (action.equals(ActionConstants.ACTION_SCREENSHOT)) {
-                try {
-                    barService.toggleScreenshot();
-                } catch (RemoteException e) {}
                 return;
             } else if (action.equals(ActionConstants.ACTION_NOW_ON_TAP)) {
                 try {
