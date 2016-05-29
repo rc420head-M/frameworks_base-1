@@ -231,4 +231,11 @@ the screen). [CHAR LIMIT=NONE] -->
     <string name="quick_settings_themes_system_theme">Apply theme</string>
     <string name="quick_settings_themes_default_theme">Default</string>
     <string name="quick_settings_themes_match_system">Match system theme</string>
+
+    <!-- Screenshot Crop & Share -->
+    <string name="action_delete_success">Deleted</string>
+    <string name="action_delete_fault">Deleting was unsuccessful</string>
+    <string name="action_save_success">Saved</string>
+    <string name="action_save_fault">Saving was unsuccessful</string>
+    <string name="action_edit">Edit</string>
 </resources>
