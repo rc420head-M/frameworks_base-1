@@ -26,6 +26,7 @@ import android.app.KeyguardManager;
 import android.app.ProgressDialog;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.IBluetoothManager;
+import android.content.pm.ThemeUtils;
 import android.media.AudioAttributes;
 import android.nfc.NfcAdapter;
 import android.nfc.INfcAdapter;
@@ -138,9 +139,10 @@ public final class ShutdownThread extends Thread {
      * @param confirm true if user confirmation is needed before shutting down.
      */
     public static void shutdown(final Context context, boolean confirm) {
+        final Context uiContext = getUiContext(context);
         mReboot = false;
         mRebootSafeMode = false;
-        shutdownInner(context, confirm);
+        shutdownInner(uiContext, confirm);
     }
 
     private static boolean isAdvancedRebootPossible(final Context context) {
@@ -331,11 +333,12 @@ public final class ShutdownThread extends Thread {
      * @param confirm true if user confirmation is needed before shutting down.
      */
     public static void reboot(final Context context, String reason, boolean confirm) {
+        final Context uiContext = getUiContext(context);
         mReboot = true;
         mRebootSafeMode = false;
         mRebootUpdate = false;
         mRebootReason = reason;
-        shutdownInner(context, confirm);
+        shutdownInner(uiContext, confirm);
     }
 
     /**
@@ -891,6 +894,15 @@ public final class ShutdownThread extends Thread {
         if (!done[0]) {
             Log.w(TAG, "Timed out waiting for uncrypt.");
         }
+    }
+
+    private static Context getUiContext(Context context) {
+        Context uiContext = null;
+        if (context != null) {
+            uiContext = ThemeUtils.createUiContext(context);
+            uiContext.setTheme(android.R.style.Theme_DeviceDefault_Light_DarkActionBar);
+        }
+        return uiContext != null ? uiContext : context;
     }
 }
 

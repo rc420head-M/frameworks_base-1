@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="darkkat_blue_grey">#ff1b1f23</color>
+    <drawable name="darkkat_bg_blue_grey">@color/darkkat_blue_grey</drawable>
+</resources>

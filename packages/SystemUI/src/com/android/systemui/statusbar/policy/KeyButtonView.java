@@ -23,6 +23,9 @@ import android.app.ActivityManagerNative;
 import android.app.IActivityManager;
 import android.content.Context;
 import android.content.res.Configuration;
+import android.content.pm.PackageManager;
+import android.content.res.Resources;
+import android.content.res.ThemeConfig;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.PorterDuff.Mode;
@@ -200,7 +203,28 @@ public class KeyButtonView extends ImageView {
 
     public void setRippleColor(int color) {
         mRipple.setColor(color);
-    }
+       }
+
+    @Override
+    public Resources getResources() {
+        ThemeConfig themeConfig = mContext.getResources().getConfiguration().themeConfig;
+        Resources res = null;
+        if (themeConfig != null) {
+            try {
+                final String navbarThemePkgName = themeConfig.getOverlayForNavBar();
+                final String sysuiThemePkgName = themeConfig.getOverlayForStatusBar();
+                // Check if the same theme is applied for systemui, if so we can skip this
+                if (navbarThemePkgName != null && !navbarThemePkgName.equals(sysuiThemePkgName)) {
+                    res = mContext.getPackageManager().getThemedResourcesForApplication(
+                            mContext.getPackageName(), navbarThemePkgName);
+                }
+            } catch (PackageManager.NameNotFoundException e) {
+                // don't care since we'll handle res being null below
+            }
+        }
+
+        return res != null ? res : super.getResources();
+      }
 
     public boolean onTouchEvent(MotionEvent ev) {
         final int action = ev.getAction();

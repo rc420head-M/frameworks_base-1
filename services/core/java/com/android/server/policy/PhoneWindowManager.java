@@ -2117,6 +2117,10 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                 && !mAccessibilityManager.isTouchExplorationEnabled();
     }
 
+    public boolean needsNavigationBar() {
+        return mHasNavigationBar;
+    }
+
     @Override
     public boolean isDefaultOrientationForced() {
         return mForceDefaultOrientation;
@@ -8000,10 +8004,6 @@ public class PhoneWindowManager implements WindowManagerPolicy {
     @Override
     public boolean hasPermanentMenuKey() {
         return !hasNavigationBar() && mHasPermanentMenuKey;
-    }
-
-    public boolean needsNavigationBar() {
-        return mHasNavigationBar;
     }
 
     @Override

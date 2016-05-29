@@ -25,8 +25,7 @@ namespace {
 
         bool operator<(Overlay const& rhs) const
         {
-            // Note: order is reversed by design
-            return rhs.priority < priority;
+            return rhs.priority > priority;
         }
 
         String8 apk_path;
@@ -205,7 +204,7 @@ namespace {
                 idmap_path.appendPath(flatten_path(overlay_apk_path + 1));
                 idmap_path.append("@idmap");
 
-                if (idmap_create_path(target_apk_path, overlay_apk_path,
+                if (idmap_create_path(target_apk_path, overlay_apk_path, NULL, 0, 0,
                         idmap_path.string()) != 0) {
                     ALOGE("error: failed to create idmap for target=%s overlay=%s idmap=%s\n",
                             target_apk_path, overlay_apk_path, idmap_path.string());
@@ -242,3 +241,4 @@ int idmap_scan(const char *overlay_dir, const char *target_package_name,
 
     return res;
 }
+
