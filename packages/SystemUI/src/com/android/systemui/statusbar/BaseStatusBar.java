@@ -46,6 +46,7 @@ import android.content.res.Resources;
 import android.content.ServiceConnection;
 import android.content.res.ThemeConfig;
 import android.database.ContentObserver;
+import android.graphics.PixelFormat;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.Icon;
@@ -98,7 +99,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.internal.logging.MetricsLogger;
-import android.graphics.PixelFormat;
 import com.android.internal.statusbar.IStatusBarService;
 import com.android.internal.statusbar.StatusBarIcon;
 import com.android.internal.statusbar.StatusBarIconList;
@@ -113,6 +113,7 @@ import com.android.systemui.RecentsComponent;
 import com.android.systemui.SwipeHelper;
 import com.android.systemui.SystemUI;
 import com.android.systemui.assist.AssistManager;
+import com.android.systemui.navigation.Navigator;
 import com.android.systemui.recents.Recents;
 import com.android.systemui.slimrecent.RecentController;
 import com.android.systemui.statusbar.NotificationData.Entry;
@@ -195,7 +196,7 @@ public abstract class BaseStatusBar extends SystemUI implements
     protected AccessibilityManager mAccessibilityManager;
 
     // on-screen navigation buttons
-    protected NavigationBarView mNavigationBarView = null;
+    protected Navigator mNavigationBarView = null;
 
     protected boolean mDeviceInteractive;
 

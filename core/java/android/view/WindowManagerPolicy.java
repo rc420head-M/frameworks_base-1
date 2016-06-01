@@ -1248,6 +1248,16 @@ public interface WindowManagerPolicy {
     public boolean hasPermanentMenuKey();
 
     /**
+     * Specifies whether the device needs a navigation bar (because it has no hardware buttons)
+     */
+    public boolean needsNavigationBar();
+
+    /**
+     * Navigation bar window is currently capable of being vertical
+     */
+    public boolean navigationBarCanMove();
+
+    /**
      * Lock the device now.
      */
     public void lockNow(Bundle options);

@@ -296,4 +296,14 @@ interface IWindowManager
      * @hide
      */
     int getSystemUIVisibility();
+
+    /**
+     * Device needs a software navigation bar (because it has no hardware keys).
+     */
+    boolean needsNavigationBar();
+
+    /**
+     * Navigation bar window is currently capable of being vertical
+     */
+    boolean navigationBarCanMove();
 }
