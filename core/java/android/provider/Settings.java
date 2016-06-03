@@ -2976,13 +2976,6 @@ public final class Settings {
                 new DiscreteValueValidator(new String[] {"12", "24"});
 
         /**
-        * Developer options - Navigation Bar show switch
-        * @hide
-        */
-        public static final String DEV_FORCE_SHOW_NAVBAR = "dev_force_show_navbar";
-
-
-        /**
          * Date format string
          *   mm/dd/yyyy
          *   dd/mm/yyyy
@@ -3631,67 +3624,6 @@ public final class Settings {
          */
 
         /**
-         * Navigation bar button color
-         * @hide
-         */
-        public static final String NAVIGATION_BAR_BUTTON_TINT = "navigation_bar_button_tint";
-
-        /**
-         * Option To Colorize Navigation bar buttons in different modes
-         * 0 = all, 1 = system icons, 2 = system icons + custom user icons
-         * @hide
-         */
-        public static final String NAVIGATION_BAR_BUTTON_TINT_MODE = "navigation_bar_button_tint_mode";
-
-        /**
-         * Navigation bar glow color
-         * @hide
-         */
-        public static final String NAVIGATION_BAR_GLOW_TINT = "navigation_bar_glow_tint";
-
-        /**
-         * Wether navigation bar is enabled or not
-         * @hide
-         */
-        public static final String NAVIGATION_BAR_SHOW = "navigation_bar_show";
-
-        /**
-         * Wether navigation bar is on landscape on the bottom or on the right
-         * @hide
-         */
-        public static final String NAVIGATION_BAR_CAN_MOVE = "navigation_bar_can_move";
-
-        /**
-         * Navigation bar height when it is on protrait
-         * @hide
-         */
-        public static final String NAVIGATION_BAR_HEIGHT = "navigation_bar_height";
-
-        /**
-         * Navigation bar height when it is on landscape at the bottom
-         * @hide
-         */
-        public static final String NAVIGATION_BAR_HEIGHT_LANDSCAPE = "navigation_bar_height_landscape";
-
-        /**
-         * Navigation bar height when it is on landscape at the right
-         * @hide
-         */
-        public static final String NAVIGATION_BAR_WIDTH = "navigation_bar_width";
-
-        /**
-         * Custom navigation bar intent and action configuration
-         * @hide
-         */
-        public static final String NAVIGATION_BAR_CONFIG = "navigation_bar_config";
-
-        /**
-         * Wether the navbar menu button is on the left/right/both
-         * @hide
-         */
-        public static final String MENU_LOCATION = "menu_location";
-
-        /**
          * Whether the hardware keys are disabled or enabled
          * @hide
          */
@@ -3840,18 +3772,6 @@ public final class Settings {
          */
         public static final String KEY_CAMERA_DOUBLE_TAP_ACTION =
                 "key_camera_double_tap_action";
-
-        /**
-         * Whether the navbar menu button should show or not
-         * @hide
-         */
-        public static final String MENU_VISIBILITY = "menu_visibility";
-
-        /**
-         * Whether to show the IME arrows in the status bar
-         * @hide
-         */
-        public static final String NAVIGATION_BAR_IME_ARROWS = "navigation_bar_ime_arrows";
 
         /**
          * Whether wifi settings will connect to access point automatically
@@ -4625,43 +4545,6 @@ public final class Settings {
         public static final String STATUS_BAR_IME_ARROWS = "status_bar_ime_arrows";
 
         /**
-         * Whether to dim the navigation bar icons after inactivity
-         * @hide
-         */
-        public static final String DIM_NAV_BUTTONS = "dim_nav_buttons";
-
-        /**
-         * Time in milliseconds to wait before dimming the nav buttons
-         * @hide
-         */
-        public static final String DIM_NAV_BUTTONS_TIMEOUT = "dim_nav_buttons_timeout";
-
-        /**
-         * Alpha value percentage to dim the nav buttons to
-         * @hide
-         */
-        public static final String DIM_NAV_BUTTONS_ALPHA = "dim_nav_buttons_alpha";
-
-        /**
-         * Whether to animate the nav button dimming
-         * @hide
-         */
-        public static final String DIM_NAV_BUTTONS_ANIMATE = "dim_nav_buttons_animate";
-
-        /**
-         * Duration of the fade animation in milliseconds
-         * @hide
-         */
-        public static final String DIM_NAV_BUTTONS_ANIMATE_DURATION = "dim_nav_buttons_animate_duration";
-
-        /**
-         * Whether to listen on the entire screen for touches to un-dim
-         * the buttons instead of just listening on the navbar
-         * @hide
-         */
-        public static final String DIM_NAV_BUTTONS_TOUCH_ANYWHERE = "dim_nav_buttons_touch_anywhere";
-
-        /**
          * Whether to apply a shadow on top of the header image
          * value is the alpha value of the shadow image is 0 -> no shadow -> 255 black
          * @hide
@@ -4862,6 +4745,12 @@ public final class Settings {
          * @hide
          */
         public static final String TRANSPARENT_POWER_MENU = "transparent_power_menu";
+
+        /**
+         * Dummy value to keep Slim actions happy
+         * @hide
+         */
+        public static final String NAVIGATION_BAR_CONFIG = "navigation_bar_config";
 
         /**
          * Settings to backup. This is here so that it's in the same place as the settings
