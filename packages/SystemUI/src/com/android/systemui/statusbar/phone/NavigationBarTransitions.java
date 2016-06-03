@@ -24,6 +24,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.AccelerateInterpolator;
 
+import com.android.systemui.statusbar.BarTransitions;
 import com.android.internal.statusbar.IStatusBarService;
 import com.android.systemui.statusbar.policy.KeyButtonView;
 import com.android.systemui.R;
@@ -93,12 +94,13 @@ public final class NavigationBarTransitions extends BarTransitions {
 
         final View navButtons = mView.getCurrentView().findViewById(R.id.nav_buttons);
         final View lowLights = mView.getCurrentView().findViewById(R.id.lights_out);
+        final boolean isBarPulseFaded = mView.isBarPulseFaded();
 
         // ok, everyone, stop it right there
         navButtons.animate().cancel();
         lowLights.animate().cancel();
 
-        final float navButtonsAlpha = lightsOut ? 0f : 1f;
+        final float navButtonsAlpha = lightsOut ? 0f : isBarPulseFaded ? NavigationBarView.PULSE_ALPHA_FADE : 1f;
         final float lowLightsAlpha = lightsOut ? 1f : 0f;
 
         if (!animate) {

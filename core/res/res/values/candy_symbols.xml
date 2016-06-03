@@ -221,4 +221,7 @@
     <!-- Default name of the custom carrier label -->
     <java-symbol type="string" name="default_custom_label" />
 
+    <!-- App killed message -->
+    <java-symbol type="string" name="app_killed_message" />
+
 </resources>
