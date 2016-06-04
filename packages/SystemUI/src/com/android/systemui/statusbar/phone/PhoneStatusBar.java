@@ -49,7 +49,6 @@ import android.graphics.PointF;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
-import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.inputmethodservice.InputMethodService;
@@ -110,7 +109,6 @@ import android.view.animation.Interpolator;
 import android.view.animation.LinearInterpolator;
 import android.view.animation.PathInterpolator;
 import android.widget.FrameLayout;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -168,7 +166,6 @@ import com.android.systemui.statusbar.SignalClusterView;
 import com.android.systemui.statusbar.SpeedBumpView;
 import com.android.systemui.statusbar.StatusBarIconView;
 import com.android.systemui.statusbar.StatusBarState;
-import com.android.systemui.statusbar.VisualizerView;
 import com.android.systemui.statusbar.phone.UnlockMethodCache.OnUnlockMethodChangedListener;
 import com.android.systemui.statusbar.policy.AccessibilityController;
 import com.android.systemui.statusbar.policy.BatteryController;
@@ -696,10 +693,6 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
     private PorterDuffXfermode mSrcXferMode = new PorterDuffXfermode(PorterDuff.Mode.SRC);
     private PorterDuffXfermode mSrcOverXferMode = new PorterDuffXfermode(PorterDuff.Mode.SRC_OVER);
 
-    private VisualizerView mVisualizerView;
-    private boolean mScreenOn;
-
-
     private MediaSessionManager mMediaSessionManager;
     private MediaController mMediaController;
     private String mMediaNotificationKey;
@@ -715,7 +708,6 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
                     clearCurrentMediaNotification();
                     updateMediaMetaData(true);
                 }
-                mVisualizerView.setPlaying(state.getState() == PlaybackState.STATE_PLAYING);
             }
         }
 
@@ -1061,10 +1053,8 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
         mBackdropFront = (ImageView) mBackdrop.findViewById(R.id.backdrop_front);
         mBackdropBack = (ImageView) mBackdrop.findViewById(R.id.backdrop_back);
 
-        FrameLayout scrimView = (FrameLayout) mStatusBarWindowContent.findViewById(R.id.scrimview);
-        ScrimView scrimBehind = (ScrimView) scrimView.findViewById(R.id.scrim_behind);
-        ScrimView scrimInFront =
-                (ScrimView) mStatusBarWindowContent.findViewById(R.id.scrim_in_front);
+        ScrimView scrimBehind = (ScrimView) mStatusBarWindowContent.findViewById(R.id.scrim_behind);
+        ScrimView scrimInFront = (ScrimView) mStatusBarWindowContent.findViewById(R.id.scrim_in_front);
         View headsUpScrim = mStatusBarWindowContent.findViewById(R.id.heads_up_scrim);
         mScrimController = new ScrimController(scrimBehind, scrimInFront, headsUpScrim,
                 mScrimSrcModeEnabled);
@@ -1073,7 +1063,6 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
         mScrimController.setBackDropView(mBackdrop);
         mStatusBarView.setScrimController(mScrimController);
         mDozeScrimController = new DozeScrimController(mScrimController, context);
-        mVisualizerView = (VisualizerView) scrimView.findViewById(R.id.visualizerview);
 
         mHeader = (StatusBarHeaderView) mStatusBarWindowContent.findViewById(R.id.header);
         mHeader.setActivityStarter(this);
@@ -1112,7 +1101,6 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
                 if (mDozeServiceHost != null) {
                     mDozeServiceHost.firePowerSaveChanged(mBatteryController.isPowerSave());
                 }
-              mVisualizerView.setPowerSaveMode(mBatteryController.isPowerSave());
             }
             @Override
             public void onBatteryLevelChanged(int level, boolean pluggedIn, boolean charging) {
@@ -1232,7 +1220,6 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
                 .setBatteryController(mBatteryController);
         mKeyguardStatusBar.setBatteryController(mBatteryController);
         mHeader.setNextAlarmController(mNextAlarmController);
-        mVisualizerView.setKeyguardMonitor(mKeyguardMonitor);
         mHeader.setWeatherController(mWeatherController);
 
         PowerManager pm = (PowerManager) mContext.getSystemService(Context.POWER_SERVICE);
@@ -2049,33 +2036,17 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
             }
         }
 
-        Bitmap wallpaperBitmap = null;
-        WallpaperManager wm = (WallpaperManager)
-                mContext.getSystemService(Context.WALLPAPER_SERVICE);
-        if (wm != null) {
-            BitmapDrawable wallpaperDrawable = (BitmapDrawable) wm.getDrawable();
-            if (wallpaperDrawable != null) {
-                wallpaperBitmap = wallpaperDrawable.getBitmap();
+        // apply user lockscreen image
+        if (backdropBitmap == null) {
+            WallpaperManager wm = (WallpaperManager)
+                    mContext.getSystemService(Context.WALLPAPER_SERVICE);
+            if (wm != null) {
+                backdropBitmap = wm.getKeyguardBitmap();
             }
         }
 
-        boolean keyguardVisible = (mState != StatusBarState.SHADE);
-
-        if (!mKeyguardFadingAway && keyguardVisible && mScreenOn) {
-            mVisualizerView.setVisible(true);
-            mVisualizerView.setPlaying(mMediaController != null
-                    && mMediaController.getPlaybackState() != null
-                    && mMediaController.getPlaybackState().getState()
-                            == PlaybackState.STATE_PLAYING);
-        }
-        
         final boolean hasBackdrop = backdropBitmap != null;
         mKeyguardShowingMedia = hasBackdrop;
-
-        if (keyguardVisible) {
-            // always use current backdrop to color eq
-            mVisualizerView.setBitmap(hasBackdrop ? backdropBitmap : wallpaperBitmap);
-        }
 
         if ((hasBackdrop || DEBUG_MEDIA_FAKE_ARTWORK)
                 && (mState == StatusBarState.KEYGUARD || mState == StatusBarState.SHADE_LOCKED)
@@ -3496,7 +3467,6 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
                 }
             }
             else if (Intent.ACTION_SCREEN_OFF.equals(action)) {
-                mScreenOn = false;
                 notifyNavigationBarScreenOn(false);
                 notifyHeadsUpScreenOff();
                 finishBarAnimations();
@@ -3505,7 +3475,6 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
                 if (mPieController != null) mPieController.detachPie();
             }
             else if (Intent.ACTION_SCREEN_ON.equals(action)) {
-                mScreenOn = true;
                 notifyNavigationBarScreenOn(true);
             }
         }
@@ -4371,7 +4340,6 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
                         - StatusBarIconController.DEFAULT_TINT_ANIMATION_DURATION,
                 StatusBarIconController.DEFAULT_TINT_ANIMATION_DURATION);
         disable(mDisabledUnmodified1, mDisabledUnmodified2, fadeoutDuration > 0 /* animate */);
-        mVisualizerView.setVisible(false);
     }
 
     public boolean isKeyguardFadingAway() {
@@ -4437,7 +4405,6 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
         mDozeScrimController.setDozing(mDozing &&
                 mFingerprintUnlockController.getMode()
                         != FingerprintUnlockController.MODE_WAKE_AND_UNLOCK_PULSING, animate);
-        mVisualizerView.setDozing(mDozing);
     }
 
     public void updateStackScrollerState(boolean goingToFullShade) {
@@ -4718,7 +4685,6 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
         mWakeUpTouchLocation = null;
         mStackScroller.setAnimationsEnabled(false);
         updateVisibleToUser();
-        mVisualizerView.setVisible(false);
         if (mLaunchCameraOnFinishedGoingToSleep) {
             mLaunchCameraOnFinishedGoingToSleep = false;
 
@@ -4757,7 +4723,6 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
     public void onScreenTurnedOn() {
         mScreenTurningOn = false;
         mDozeScrimController.onScreenTurnedOn();
-        mVisualizerView.setVisible(true);
     }
 
     // Recents
@@ -4906,10 +4871,6 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
                 || mFingerprintUnlockController.getMode()
                         == FingerprintUnlockController.MODE_WAKE_AND_UNLOCK_PULSING;
         updateDozingState();
-    }
-
-    public VisualizerView getVisualizer() {
-        return mVisualizerView;
     }
 
     private final class ShadeUpdates {
