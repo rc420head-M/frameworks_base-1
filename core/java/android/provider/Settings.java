@@ -3848,6 +3848,18 @@ public final class Settings {
          */
         public static final String LOCK_SCREEN_WEATHER_COLORIZE_ALL_ICONS = "lock_screen_weather_colorize_all_icons";
 
+	    /**
+         * Navbar Button Color Switch
+         * @hide
+         */
+        public static final String NAVBAR_TINT_SWITCH = "navbar_tint_switch";
+        
+         /**
+         * Navbar Button Color
+         * @hide
+         */
+        public static final String NAVBAR_BUTTON_COLOR= "navbar_button_color";
+
         /**
          * Color of the weather text on the lock screen
          * @hide
@@ -4089,6 +4101,24 @@ public final class Settings {
          * @hide
          */
         public static final String STATUS_BAR_SHOW_WEATHER = "status_bar_show_weather";
+                        
+        /**
+         * Size of Filled bars
+         * @hide
+         */
+        public static final String PULSE_FILLED_BLOCK_SIZE = "pulse_filled_block_size";
+        
+         /**
+         * Size of Empty Spaces Between Horizontal Visualizer Bars
+         * @hide
+         */
+        public static final String PULSE_EMPTY_BLOCK_SIZE = "pulse_empty_block_size";
+
+         /**
+         * Pulse Fudge Factor
+         * @hide
+         */
+        public static final String PULSE_CUSTOM_FUDGE_FACTOR = "pulse_custom_fudge_factor";
 
         /**
          * Defines the shortcuts to be shown on lockscreen
@@ -4135,6 +4165,24 @@ public final class Settings {
         public static final String STATUSBAR_BATTERY_BAR = "statusbar_battery_bar";
 
         /**
+         * Custom Pulse Widths
+         * @hide
+         */
+        public static final String PULSE_CUSTOM_DIMEN = "pulse_custom_dimen";
+
+        /**
+         * Custom Spacing Between Pulse Bars
+         * @hide
+         */
+        public static final String PULSE_CUSTOM_DIV = "pulse_custom_div";
+
+        /**
+         * Whether to show the ticker on the status bar
+         * @hide
+         */
+        public static final String STATUS_BAR_NOTIFICATION_SHOW_TICKER = "status_bar_notification_show_ticker_color";
+
+        /**
          * @hide
          */
         public static final String STATUSBAR_BATTERY_BAR_COLOR = "statusbar_battery_bar_color";
@@ -4148,7 +4196,7 @@ public final class Settings {
          * @hide
          */
         public static final String STATUSBAR_BATTERY_BAR_STYLE = "statusbar_battery_bar_style";
-
+        
         /**
          * @hide
          */
