@@ -599,19 +599,19 @@ public class StatusBarManagerService extends IStatusBarService.Stub {
                 mBar.setAutoRotate(enabled);
             } catch (RemoteException ex) {}
         }
-    }
+    }               
 
-   /**
-    * Ask keyguard to invoke a custom intent after dismissing keyguard
-    * @hide
-    */
-   @Override
-   public void showCustomIntentAfterKeyguard(Intent intent) {
-       enforceStatusBarService();
-       if (mBar != null) {
-           try {
-               mBar.showCustomIntentAfterKeyguard(intent);
-           } catch (RemoteException ex) {}
+    /**
+     * Ask keyguard to invoke a custom intent after dismissing keyguard
+     * @hide
+     */
+    @Override
+    public void showCustomIntentAfterKeyguard(Intent intent) {
+        enforceStatusBarService();
+        if (mBar != null) {
+            try {
+                mBar.showCustomIntentAfterKeyguard(intent);
+            } catch (RemoteException ex) {}
         }
     }
 
