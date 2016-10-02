@@ -2016,6 +2016,9 @@ message MetricsEvent {
 
     // Notification group expansion state toggled by the expand gesture.
     ACTION_NOTIFICATION_GROUP_GESTURE_EXPANDER = 410;
+    
+    // Candy interface
+    CANDY = 411;
 
     // User performs gesture that activates the ambient display
     // 1: Gesture performed is Nudge
