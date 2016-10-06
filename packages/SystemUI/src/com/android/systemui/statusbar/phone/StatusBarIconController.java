@@ -532,8 +532,7 @@ public class StatusBarIconController extends StatusBarIconList implements Tunabl
         }
         mSignalCluster.setIconTint(mIconTint, mDarkIntensity, mTintArea);
         mClockController.setTextColor(mIconTint);
-        //mBatteryViewManager.setDarkIntensity(
-        //        isInArea(mTintArea, mBatteryViewManager) ? mDarkIntensity : 0);
+        mBatteryViewManager.setDarkIntensity(mDarkIntensity);
     }
 
     public void appTransitionPending() {
