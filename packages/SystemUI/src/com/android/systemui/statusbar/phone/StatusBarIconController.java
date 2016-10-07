@@ -78,6 +78,7 @@ public class StatusBarIconController extends StatusBarIconList implements Tunabl
     private View mNotificationIconAreaInner;
 
     private ClockController mClockController;
+    private BatteryViewManager mBatteryViewManager;
     private View mCenterClockLayout;
 
     private int mIconSize;
