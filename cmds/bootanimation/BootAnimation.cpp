@@ -274,8 +274,6 @@ status_t BootAnimation::initTexture(const Animation::Frame& frame)
     //StopWatch watch("blah");
     return initTexture(decode(frame));
 }
-
->>>>>>> 69b29c4... bootanimation: add multithreaded decode
 status_t BootAnimation::initTexture(SkBitmap *bitmap)
 {
     // ensure we can call getPixels().
