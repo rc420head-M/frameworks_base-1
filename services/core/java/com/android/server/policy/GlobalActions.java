@@ -394,7 +394,7 @@ class GlobalActions implements DialogInterface.OnDismissListener, DialogInterfac
     
     private final class RestartAction extends SinglePressAction implements LongPressAction {
         private RestartAction() {
-            super(R.drawable.ic_restart, R.string.global_action_restart);
+            super(R.drawable.ic_restart, R.string.global_action_reboot);
         }
 
         @Override

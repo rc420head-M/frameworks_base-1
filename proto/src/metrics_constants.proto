@@ -2018,7 +2018,7 @@ message MetricsEvent {
     ACTION_NOTIFICATION_GROUP_GESTURE_EXPANDER = 410;
     
     // Candy interface
-    CANDY = 411;
+    CANDY = 412;
 
     // User performs gesture that activates the ambient display
     // 1: Gesture performed is Nudge
