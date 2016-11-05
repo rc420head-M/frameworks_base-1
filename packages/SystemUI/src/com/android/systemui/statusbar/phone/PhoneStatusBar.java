@@ -65,6 +65,7 @@ import android.graphics.Rect;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
+import android.hardware.display.DisplayManager;
 import android.inputmethodservice.InputMethodService;
 import android.media.AudioAttributes;
 import android.media.MediaMetadata;
@@ -100,7 +101,6 @@ import android.util.DisplayMetrics;
 import android.util.EventLog;
 import android.util.Log;
 import android.view.Display;
-import android.view.IRotationWatcher;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -216,7 +216,7 @@ import java.util.Map;
 
 public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
         DragDownHelper.DragDownCallback, ActivityStarter, OnUnlockMethodChangedListener,
-        HeadsUpManager.OnHeadsUpChangedListener {
+        HeadsUpManager.OnHeadsUpChangedListener, DisplayManager.DisplayListener {
     static final String TAG = "PhoneStatusBar";
     public static final boolean DEBUG = BaseStatusBar.DEBUG;
     public static final boolean SPEW = false;
@@ -744,6 +744,8 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
         mUnlockMethodCache = UnlockMethodCache.getInstance(mContext);
         mUnlockMethodCache.addListener(this);
         startKeyguard();
+
+        mContext.getSystemService(DisplayManager.class).registerDisplayListener(this, null);
 
         mDozeServiceHost = new DozeServiceHost();
         KeyguardUpdateMonitor.getInstance(mContext).registerCallback(mDozeServiceHost);
@@ -1451,27 +1453,6 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
     protected void addNavigationBar() {
         if (DEBUG) Log.v(TAG, "addNavigationBar: about to add " + mNavigationController.getBar());
         if (mNavigationController.getBar() == null) return;
-
-        try {
-            WindowManagerGlobal.getWindowManagerService()
-                    .watchRotation(new IRotationWatcher.Stub() {
-                @Override
-                public void onRotationChanged(int rotation) throws RemoteException {
-                    // We need this to be scheduled as early as possible to beat the redrawing of
-                    // window in response to the orientation change.
-                    Message msg = Message.obtain(mHandler, () -> {
-                        if (mNavigationBarView != null
-                                && mNavigationBarView.needsReorient(rotation)) {
-                            repositionNavigationBar();
-                        }
-                    });
-                    msg.setAsynchronous(true);
-                    mHandler.sendMessageAtFrontOfQueue(msg);
-                }
-            });
-        } catch (RemoteException e) {
-            throw e.rethrowFromSystemServer();
-        }
 
         prepareNavigationBarView();
 
@@ -3666,6 +3647,22 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
         updateRowStates();
         mScreenPinningRequest.onConfigurationChanged();
         mNetworkController.onConfigurationChanged();
+    }
+
+    @Override
+    public void onDisplayAdded(int displayId) {
+    }
+
+    @Override
+    public void onDisplayRemoved(int displayId) {
+    }
+
+    @Override
+    public void onDisplayChanged(int displayId) {
+        if (displayId == Display.DEFAULT_DISPLAY
+                && mNavigationBarView != null && mNavigationBarView.needsReorient()) {
+            repositionNavigationBar();
+        }
     }
 
     @Override
